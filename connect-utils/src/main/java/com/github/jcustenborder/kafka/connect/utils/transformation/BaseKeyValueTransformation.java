@@ -37,12 +37,11 @@ import java.util.Map;
  * @param <R>
  */
 public abstract class BaseKeyValueTransformation<R extends ConnectRecord<R>> implements Transformation<R> {
-  protected final boolean isKey;
   private static final Logger log = LoggerFactory.getLogger(BaseKeyValueTransformation.class);
 
-  protected BaseKeyValueTransformation(boolean isKey) {
-    this.isKey = isKey;
-  }
+  protected BaseKeyValueTransformation() {}
+
+  protected boolean isKey;
 
   protected SchemaAndValue processMap(R record, Map<String, Object> input) {
     throw new UnsupportedOperationException("MAP is not a supported type.");

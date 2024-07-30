@@ -12,8 +12,8 @@ import java.util.Map;
 public class BaseKeyValueTransformationTest {
   static class Base<R extends ConnectRecord<R>> extends BaseKeyValueTransformation<R> {
 
-    protected Base(boolean isKey) {
-      super(isKey);
+    protected Base() {
+      super();
     }
 
     @Override
@@ -33,8 +33,10 @@ public class BaseKeyValueTransformationTest {
   }
   static class StringTransformation<R extends ConnectRecord<R>> extends Base<R> {
     public StringTransformation() {
-      super(true);
+      super();
     }
+
+    protected boolean isKey = true;
 
     @Override
     protected SchemaAndValue processString(R record, Schema inputSchema, String input) {
